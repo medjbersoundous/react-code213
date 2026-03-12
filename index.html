@@ -1,13 +1,40 @@
 <!doctype html>
+<!-- doctype html dit au navigateur : "ce fichier est du html5 moderne"
+     c'est toujours la première ligne d'un fichier html -->
+
 <html lang="en">
   <head>
+    <!-- charset UTF-8 : on supporte tous les caractères (arabe, français, emojis...)
+         sans ça, les caractères spéciaux peuvent s'afficher mal -->
     <meta charset="UTF-8" />
+
+    <!-- l'icône qui apparaît dans l'onglet du navigateur (le petit logo)
+         vite.svg est l'icône par défaut de vite, on peut la remplacer par la nôtre -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- cette ligne est importante pour le responsive (mobile)
+         elle dit au navigateur de ne pas zoomer automatiquement sur mobile
+         sans ça, le site apparaît tout petit sur téléphone -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- le titre qui apparaît dans l'onglet du navigateur -->
     <title>react-code213</title>
   </head>
+
   <body>
+    <!-- voilà la div la plus importante de tout notre projet !
+         c'est le seul endroit dans le html où react va s'accrocher
+         on lui donne l'id "root" et dans main.jsx on fait :
+         document.getElementById('root') pour la trouver
+         react va injecter toute notre application à l'intérieur de cette div
+         si tu inspectes la page dans le navigateur, tu verras que cette div
+         se remplit automatiquement avec tout notre jsx -->
     <div id="root"></div>
+
+    <!-- ce script charge notre fichier main.jsx comme point d'entrée
+         type="module" est nécessaire pour utiliser les imports/exports javascript modernes
+         c'est vite qui s'occupe de transformer notre jsx en javascript que le navigateur comprend
+         en production, vite va regrouper tous nos fichiers en un seul bundle optimisé -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
