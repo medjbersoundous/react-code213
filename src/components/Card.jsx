@@ -13,6 +13,7 @@ export default function Card({ name, prenom, age }) {
     </div>
   );
 }
+
 // pourquoi utiliser un composant Card ?
 // parce qu'on a plusieurs coaches à afficher avec la même structure
 // au lieu de répéter le même html 3 fois, on crée un composant réutilisable

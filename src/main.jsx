@@ -1,21 +1,35 @@
-// main.jsx : c'est le tout premier fichier qui s'exécute dans notre app
-// son rôle est de "brancher" react sur notre page html
-// on importe StrictMode depuis react
-// StrictMode est un outil de développement qui nous aide à détecter les erreurs
-import { StrictMode } from 'react'
-// createRoot est la fonction qui permet à react de prendre le contrôle d'un élément html
-import { createRoot } from 'react-dom/client'
-// on importe les styles globaux de notre application
-import './index.css'
-// on importe notre composant principal App
-import App from './App.jsx'
-// document.getElementById('root') va chercher la div avec l'id "root" dans index.html
-// c'est là que react va injecter toute notre application
-// createRoot() dit à react "cette div est à toi, gère-la"
-createRoot(document.getElementById('root')).render(
-  // StrictMode entoure notre App pour activer les vérifications supplémentaires
-  // en production ça n'a aucun effet, c'est juste utile pendant le développement
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+
+// we import Provider from react-redux
+// provider is the bridge between react and redux
+// it allows all react components to access the redux store
+import { Provider } from "react-redux";
+
+// we import the store we created
+// the store contains all global state (counter, cart, etc)
+import store from "./redux/store";
+createRoot(document.getElementById("root")).render(
+
+  // strictmode is a react tool for development (not related to redux)
   <StrictMode>
-    <App />
+    {/* provider wraps the whole app */}
+    <Provider store={store}>
+      {/* we pass the store as a prop to provider */}
+      {/* now every component inside <App /> can access redux */}
+
+      {/* thanks to provider, we can use: */}
+      {/* - useSelector() -> to read data from store */}
+      {/* - useDispatch() -> to send actions */}
+
+      {/* without provider, redux will not work in components */}
+
+      {/* provider makes the store available globally */}
+
+      <App />
+    </Provider>
+
   </StrictMode>,
-)
+);
